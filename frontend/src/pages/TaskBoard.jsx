@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import API_BASE_URL from '../config/api';
 import CreateTaskModal from '../components/CreateTaskModal';
 
 const TaskBoard = () => {
@@ -18,7 +19,7 @@ const TaskBoard = () => {
       return;
     }
 
-    fetch('http://localhost:5001/api/tasks', {
+    fetch(`${API_BASE_URL}/api/tasks`, {
       headers: {
         'Authorization': `Bearer ${token}`
       }

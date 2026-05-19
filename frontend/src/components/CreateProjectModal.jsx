@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import API_BASE_URL from '../config/api';
 
 const CreateProjectModal = ({ isOpen, onClose, onProjectCreated }) => {
   const [name, setName] = useState('');
@@ -16,7 +17,7 @@ const CreateProjectModal = ({ isOpen, onClose, onProjectCreated }) => {
 
     const token = localStorage.getItem('token');
     try {
-      const res = await fetch('http://localhost:5001/api/projects', {
+      const res = await fetch(`${API_BASE_URL}/api/projects`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

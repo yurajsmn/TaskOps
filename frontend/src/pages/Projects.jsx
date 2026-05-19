@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import API_BASE_URL from '../config/api';
 import ProjectCard from '../components/ProjectCard';
 import CreateProjectModal from '../components/CreateProjectModal';
 import AddMemberModal from '../components/AddMemberModal';
@@ -21,7 +22,7 @@ const Projects = () => {
       return;
     }
 
-    fetch('http://localhost:5001/api/projects', {
+    fetch(`${API_BASE_URL}/api/projects`, {
       headers: {
         'Authorization': `Bearer ${token}`
       }
