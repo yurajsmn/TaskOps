@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import API_BASE_URL from '../config/api';
 
 const Dashboard = () => {
   const [data, setData] = useState(null);
@@ -12,7 +13,7 @@ const Dashboard = () => {
       return;
     }
 
-    fetch('http://localhost:5001/api/dashboard', {
+    fetch(`${API_BASE_URL}/api/dashboard`, {
       headers: {
         'Authorization': `Bearer ${token}`
       }
