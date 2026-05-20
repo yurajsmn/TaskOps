@@ -1,0 +1,14 @@
+{
+  "name": "taskops-enterprise",
+  "version": "1.0.0",
+  "description": "TaskOps Enterprise Platform",
+  "main": "backend/server.js",
+  "scripts": {
+    "build": "cd frontend && npm install && npm run build && cd ../backend && npm install",
+    "start": "cd backend && node server.js",
+    "dev": "concurrently \"cd backend && npm run dev\" \"cd frontend && npm run dev\""
+  },
+  "dependencies": {
+    "concurrently": "^8.2.2"
+  }
+}

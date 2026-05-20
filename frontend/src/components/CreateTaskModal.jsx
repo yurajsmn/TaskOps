@@ -15,7 +15,7 @@ const CreateTaskModal = ({ isOpen, onClose, onTaskCreated }) => {
     if (isOpen) {
       const token = localStorage.getItem('token');
       // Fetch projects
-      fetch('http://localhost:5001/api/projects', {
+      fetch('/api/projects', {
         headers: { 'Authorization': `Bearer ${token}` }
       })
       .then(res => res.json())
@@ -23,7 +23,7 @@ const CreateTaskModal = ({ isOpen, onClose, onTaskCreated }) => {
       .catch(err => console.error('Error fetching projects:', err));
 
       // Fetch users
-      fetch('http://localhost:5001/api/auth/users', {
+      fetch('/api/auth/users', {
         headers: { 'Authorization': `Bearer ${token}` }
       })
       .then(res => res.json())
@@ -41,7 +41,7 @@ const CreateTaskModal = ({ isOpen, onClose, onTaskCreated }) => {
 
     const token = localStorage.getItem('token');
     try {
-      const res = await fetch('http://localhost:5001/api/tasks', {
+      const res = await fetch('/api/tasks', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

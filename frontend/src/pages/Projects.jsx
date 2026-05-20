@@ -21,7 +21,7 @@ const Projects = () => {
       return;
     }
 
-    fetch('http://localhost:5001/api/projects', {
+    fetch('/api/projects', {
       headers: {
         'Authorization': `Bearer ${token}`
       }

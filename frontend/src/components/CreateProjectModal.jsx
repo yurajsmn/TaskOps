@@ -16,7 +16,7 @@ const CreateProjectModal = ({ isOpen, onClose, onProjectCreated }) => {
 
     const token = localStorage.getItem('token');
     try {
-      const res = await fetch('http://localhost:5001/api/projects', {
+      const res = await fetch('/api/projects', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

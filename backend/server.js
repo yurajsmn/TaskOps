@@ -22,10 +22,17 @@ mongoose.connect(process.env.MONGO_URI)
 app.use('/api/auth', authRoutes);
 app.use('/api/projects', verifyToken, projectRoutes);
 app.use('/api/dashboard', verifyToken, dashboardRoutes);
-app.use('/api/tasks', verifyToken, tasksRoutes);
+    app.use('/api/tasks', verifyToken, tasksRoutes);
+
+const path = require('path');
+app.use(express.static(path.join(__dirname, '../frontend/dist')));
 
 app.get('/api/health', (req, res) => {
     res.json({ status: 'ok' });
+});
+
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, '../frontend/dist/index.html'));
 });
 
 app.listen(PORT, () => {

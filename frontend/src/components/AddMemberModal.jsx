@@ -9,7 +9,7 @@ const AddMemberModal = ({ isOpen, onClose, projectId, onMemberAdded }) => {
   useEffect(() => {
     if (isOpen) {
       const token = localStorage.getItem('token');
-      fetch('http://localhost:5001/api/auth/users', {
+      fetch('/api/auth/users', {
         headers: { 'Authorization': `Bearer ${token}` }
       })
       .then(res => res.json())
@@ -32,7 +32,7 @@ const AddMemberModal = ({ isOpen, onClose, projectId, onMemberAdded }) => {
 
     const token = localStorage.getItem('token');
     try {
-      const res = await fetch(`http://localhost:5001/api/projects/${projectId}/members`, {
+      const res = await fetch(`/api/projects/${projectId}/members`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

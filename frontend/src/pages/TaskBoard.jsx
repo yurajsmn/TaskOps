@@ -18,7 +18,7 @@ const TaskBoard = () => {
       return;
     }
 
-    fetch('http://localhost:5001/api/tasks', {
+    fetch('/api/tasks', {
       headers: {
         'Authorization': `Bearer ${token}`
       }

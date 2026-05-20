@@ -12,7 +12,7 @@ const Dashboard = () => {
       return;
     }
 
-    fetch('http://localhost:5001/api/dashboard', {
+    fetch('/api/dashboard', {
       headers: {
         'Authorization': `Bearer ${token}`
       }
