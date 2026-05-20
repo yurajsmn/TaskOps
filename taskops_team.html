@@ -1,0 +1,435 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-fixed": "#6ffbbe",
+                        "on-secondary-fixed": "#0b1c30",
+                        "primary-container": "#131b2e",
+                        "primary": "#000000",
+                        "primary-fixed": "#dae2fd",
+                        "on-surface": "#191c1e",
+                        "surface-variant": "#e0e3e5",
+                        "surface-dim": "#d8dadc",
+                        "error": "#ba1a1a",
+                        "tertiary-container": "#002113",
+                        "primary-fixed-dim": "#bec6e0",
+                        "on-secondary-fixed-variant": "#38485d",
+                        "tertiary-fixed-dim": "#4edea3",
+                        "surface-container-highest": "#e0e3e5",
+                        "secondary-fixed-dim": "#b7c8e1",
+                        "on-primary": "#ffffff",
+                        "secondary": "#505f76",
+                        "surface-container-high": "#e6e8ea",
+                        "error-container": "#ffdad6",
+                        "tertiary": "#000000",
+                        "on-primary-container": "#7c839b",
+                        "on-secondary": "#ffffff",
+                        "background": "#f7f9fb",
+                        "on-tertiary-fixed-variant": "#005236",
+                        "surface-container": "#eceef0",
+                        "outline-variant": "#c6c6cd",
+                        "on-primary-fixed-variant": "#3f465c",
+                        "on-error": "#ffffff",
+                        "on-primary-fixed": "#131b2e",
+                        "on-tertiary-fixed": "#002113",
+                        "on-tertiary": "#ffffff",
+                        "surface-container-low": "#f2f4f6",
+                        "on-background": "#191c1e",
+                        "surface-tint": "#565e74",
+                        "on-tertiary-container": "#009668",
+                        "on-error-container": "#93000a",
+                        "surface-bright": "#f7f9fb",
+                        "surface": "#f7f9fb",
+                        "inverse-on-surface": "#eff1f3",
+                        "secondary-fixed": "#d3e4fe",
+                        "outline": "#76777d",
+                        "on-surface-variant": "#45464d",
+                        "secondary-container": "#d0e1fb",
+                        "inverse-surface": "#2d3133",
+                        "inverse-primary": "#bec6e0",
+                        "on-secondary-container": "#54647a",
+                        "surface-container-lowest": "#ffffff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xs": "4px",
+                        "margin-mobile": "16px",
+                        "lg": "24px",
+                        "margin-desktop": "32px",
+                        "md": "16px",
+                        "sm": "8px",
+                        "base": "4px",
+                        "gutter": "24px",
+                        "xl": "40px"
+                    },
+                    "fontFamily": {
+                        "headline-lg-mobile": ["Inter"],
+                        "label-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "headline-xl": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-lg-mobile": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-md": ["18px", {"lineHeight": "24px", "fontWeight": "600"}],
+                        "headline-lg": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "label-sm": ["11px", {"lineHeight": "14px", "fontWeight": "500"}],
+                        "headline-xl": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body { background-color: #f7f9fb; font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .table-stripe tr:nth-child(even) { background-color: #f8fafc; }
+        .custom-scrollbar::-webkit-scrollbar { width: 4px; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #e2e8f0; border-radius: 10px; }
+    </style>
+</head>
+<body class="text-on-background">
+<!-- SideNavBar Component -->
+<aside class="fixed left-0 top-0 h-full w-64 bg-surface-container-low border-r border-outline-variant flex flex-col p-md gap-sm z-50">
+<div class="flex flex-col mb-lg">
+<span class="font-headline-lg text-headline-lg font-black text-on-primary-fixed">TaskOps</span>
+<span class="font-label-md text-label-md text-on-surface-variant">Enterprise Edition</span>
+</div>
+<nav class="flex flex-col gap-xs flex-grow">
+<div class="flex items-center gap-md px-md py-sm cursor-pointer transition-all hover:bg-surface-container-high rounded-lg text-on-surface-variant">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-label-md text-label-md">Dashboard</span>
+</div>
+<div class="flex items-center gap-md px-md py-sm cursor-pointer transition-all hover:bg-surface-container-high rounded-lg text-on-surface-variant">
+<span class="material-symbols-outlined" data-icon="assignment">assignment</span>
+<span class="font-label-md text-label-md">Projects</span>
+</div>
+<!-- Active Tab: Team -->
+<div class="flex items-center gap-md px-md py-sm cursor-pointer transition-transform duration-200 active:scale-95 bg-secondary-container text-on-secondary-container rounded-lg font-bold">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+<span class="font-label-md text-label-md">Team</span>
+</div>
+<div class="flex items-center gap-md px-md py-sm cursor-pointer transition-all hover:bg-surface-container-high rounded-lg text-on-surface-variant">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-label-md text-label-md">Settings</span>
+</div>
+</nav>
+<button class="mt-auto bg-primary text-on-primary py-md px-lg rounded-lg font-label-md text-label-md flex items-center justify-center gap-sm hover:opacity-90 transition-opacity">
+<span class="material-symbols-outlined text-[20px]" data-icon="add">add</span>
+            Create New Task
+        </button>
+</aside>
+<!-- TopNavBar Component -->
+<header class="fixed top-0 right-0 h-16 bg-surface-container-lowest border-b border-outline-variant flex justify-between items-center px-margin-desktop z-40 ml-64 w-[calc(100%-16rem)]">
+<div class="flex items-center gap-md">
+<h1 class="font-headline-md text-headline-md font-bold text-on-surface">Team Management</h1>
+</div>
+<div class="flex items-center gap-lg">
+<div class="relative flex items-center bg-surface-container-high rounded-full px-md py-xs">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="search">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-body-md font-body-md ml-sm w-48" placeholder="Search members..." type="text">
+</div>
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:bg-surface-container-high p-xs rounded-full transition-colors" data-icon="notifications">notifications</span>
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:bg-surface-container-high p-xs rounded-full transition-colors" data-icon="settings">settings</span>
+<div class="w-8 h-8 rounded-full bg-secondary-container flex items-center justify-center overflow-hidden border border-outline-variant">
+<img alt="User profile avatar with role badge" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBh8rr5EfQUWs4XfH0WDThCK4CWGO6S41JbLidgdLKL6ujSH_HWcZBOzHJzyj6FpAXJ9g016bzP5MOq5RwVQ6BeQe1k0Fv3C1nOHiM53O6__tssU_-qf8eVM2L5u4_FLQi43HKHqMT3CG7QMRP1qguYYxey9oypW1O2tvyJVioLeZlcB2z4wt93barwPWsNGbRjAGMqFkFIYWeDFBvmCVUPDbVxRNdeAiDZ4fEnNScfR5VPWd2FyKNjMDk7YZHEI0aKpwROpc84EQ">
+</div>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="ml-64 pt-16 min-h-screen p-margin-desktop bg-background">
+<div class="max-w-[1440px] mx-auto space-y-lg">
+<!-- Header Actions & Bento Stats -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+<!-- Role Summary Card -->
+<div class="md:col-span-8 bg-surface-container-lowest border border-outline-variant rounded-xl p-lg flex flex-col justify-between relative overflow-hidden">
+<div class="relative z-10">
+<h2 class="font-headline-md text-headline-md text-on-surface mb-sm">Role Permissions Overview</h2>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-2xl mb-lg">Manage organizational hierarchy and access levels. System administrators maintain full oversight of security protocols, while members focus on operational execution within assigned project scopes.</p>
+<div class="grid grid-cols-2 gap-lg">
+<div class="flex gap-md p-md rounded-lg bg-surface-container-low border border-outline-variant">
+<span class="material-symbols-outlined text-primary" data-icon="admin_panel_settings">admin_panel_settings</span>
+<div>
+<span class="block font-label-md text-label-md text-primary uppercase tracking-wider mb-xs">Admin Access</span>
+<span class="font-body-md text-body-md text-on-surface-variant">Full system control, billing management, and team-wide oversight.</span>
+</div>
+</div>
+<div class="flex gap-md p-md rounded-lg bg-surface-container-low border border-outline-variant">
+<span class="material-symbols-outlined text-secondary" data-icon="person">person</span>
+<div>
+<span class="block font-label-md text-label-md text-secondary uppercase tracking-wider mb-xs">Member Access</span>
+<span class="font-body-md text-body-md text-on-surface-variant">Project-level contributions, task management, and data reporting.</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Decorative Element -->
+<div class="absolute -right-12 -top-12 w-48 h-48 bg-primary-fixed opacity-10 rounded-full blur-3xl"></div>
+</div>
+<!-- Invite CTA Card -->
+<div class="md:col-span-4 bg-primary-container text-on-primary rounded-xl p-lg flex flex-col items-center justify-center text-center gap-md border border-primary">
+<div class="w-16 h-16 rounded-full bg-on-primary-container flex items-center justify-center mb-sm">
+<span class="material-symbols-outlined text-primary-container text-[32px]" data-icon="person_add">person_add</span>
+</div>
+<h3 class="font-headline-md text-headline-md font-bold">Scale Your Team</h3>
+<p class="font-body-md text-body-md text-on-primary-container mb-md">Add new specialists to your workspace and assign them to active project cycles.</p>
+<button class="w-full bg-on-primary text-primary py-md px-lg rounded-lg font-bold font-label-md text-label-md hover:bg-primary-fixed transition-colors">
+                        Invite New Member
+                    </button>
+</div>
+</div>
+<!-- Team Members Table -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden">
+<div class="p-lg border-b border-outline-variant flex justify-between items-center bg-white">
+<div class="flex items-center gap-md">
+<span class="font-headline-md text-headline-md font-bold text-on-surface">Directory</span>
+<span class="bg-secondary-container text-on-secondary-container px-sm py-xs rounded-full font-label-sm text-label-sm">48 Members</span>
+</div>
+<div class="flex items-center gap-sm">
+<div class="bg-surface-container-high p-xs rounded-lg flex">
+<button class="px-md py-sm bg-white shadow-sm rounded-md font-label-md text-label-md text-primary">All</button>
+<button class="px-md py-sm font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors">Admins</button>
+<button class="px-md py-sm font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors">Members</button>
+</div>
+<button class="flex items-center gap-xs px-md py-sm border border-outline-variant rounded-lg font-label-md text-label-md text-on-surface-variant hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined text-[18px]" data-icon="filter_list">filter_list</span>
+                            Filter
+                        </button>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left table-stripe">
+<thead>
+<tr class="bg-surface-container-low text-on-surface-variant font-label-md text-label-md uppercase tracking-widest border-b border-outline-variant">
+<th class="px-lg py-md font-medium">Team Member</th>
+<th class="px-lg py-md font-medium">Role</th>
+<th class="px-lg py-md font-medium">Projects Assigned</th>
+<th class="px-lg py-md font-medium">Last Active</th>
+<th class="px-lg py-md font-medium text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant">
+<!-- Row 1 -->
+<tr class="hover:bg-surface-container-high/50 transition-colors">
+<td class="px-lg py-md">
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 rounded-full bg-primary-fixed flex items-center justify-center font-bold text-primary">EK</div>
+<div>
+<span class="block font-body-md text-body-md font-bold text-on-surface">Elena Kovic</span>
+<span class="block font-label-sm text-label-sm text-on-surface-variant">elena.k@taskops.com</span>
+</div>
+</div>
+</td>
+<td class="px-lg py-md">
+<select class="bg-white border border-outline-variant rounded-lg px-sm py-xs font-label-md text-label-md focus:ring-primary focus:border-primary">
+<option selected="">Admin</option>
+<option>Member</option>
+</select>
+</td>
+<td class="px-lg py-md">
+<div class="flex -space-x-2">
+<div class="w-8 h-8 rounded-full border-2 border-white bg-tertiary-fixed flex items-center justify-center font-bold text-[10px]" title="Project Apollo">A</div>
+<div class="w-8 h-8 rounded-full border-2 border-white bg-secondary-fixed flex items-center justify-center font-bold text-[10px]" title="Project Helios">H</div>
+<div class="w-8 h-8 rounded-full border-2 border-white bg-surface-container-highest flex items-center justify-center font-bold text-[10px] text-on-surface-variant">+3</div>
+</div>
+</td>
+<td class="px-lg py-md font-body-md text-body-md text-on-surface-variant">2 mins ago</td>
+<td class="px-lg py-md text-right">
+<div class="flex justify-end gap-sm">
+<button class="p-xs hover:bg-surface-container-high rounded transition-colors text-on-surface-variant" title="Edit Role">
+<span class="material-symbols-outlined text-[20px]" data-icon="edit">edit</span>
+</button>
+<button class="p-xs hover:bg-error-container hover:text-error rounded transition-colors text-on-surface-variant" title="Remove Access">
+<span class="material-symbols-outlined text-[20px]" data-icon="person_remove">person_remove</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-surface-container-high/50 transition-colors">
+<td class="px-lg py-md">
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 rounded-full bg-secondary-fixed flex items-center justify-center font-bold text-on-secondary-fixed">MB</div>
+<div>
+<span class="block font-body-md text-body-md font-bold text-on-surface">Marcus Butler</span>
+<span class="block font-label-sm text-label-sm text-on-surface-variant">m.butler@taskops.com</span>
+</div>
+</div>
+</td>
+<td class="px-lg py-md">
+<select class="bg-white border border-outline-variant rounded-lg px-sm py-xs font-label-md text-label-md focus:ring-primary focus:border-primary">
+<option>Admin</option>
+<option selected="">Member</option>
+</select>
+</td>
+<td class="px-lg py-md">
+<div class="flex -space-x-2">
+<div class="w-8 h-8 rounded-full border-2 border-white bg-primary-fixed flex items-center justify-center font-bold text-[10px]" title="Global Expansion">GE</div>
+</div>
+</td>
+<td class="px-lg py-md font-body-md text-body-md text-on-surface-variant">1 hour ago</td>
+<td class="px-lg py-md text-right">
+<div class="flex justify-end gap-sm">
+<button class="p-xs hover:bg-surface-container-high rounded transition-colors text-on-surface-variant" title="Edit Role">
+<span class="material-symbols-outlined text-[20px]" data-icon="edit">edit</span>
+</button>
+<button class="p-xs hover:bg-error-container hover:text-error rounded transition-colors text-on-surface-variant" title="Remove Access">
+<span class="material-symbols-outlined text-[20px]" data-icon="person_remove">person_remove</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-surface-container-high/50 transition-colors">
+<td class="px-lg py-md">
+<div class="flex items-center gap-md">
+<img alt="Team member avatar" class="w-10 h-10 rounded-full" data-alt="A professional close-up portrait of a technology professional in a bright, modern office setting. The lighting is crisp and airy, highlighting a sense of collaborative energy and executive presence. The color palette is composed of soft greys and cool blues, maintaining a clean corporate aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDaY4NsIlBGjQ7LgOd1YDXcpmrwyab3CT_6LsMtST4kbKXcIBdiRUSOj5TtiSr-8Ea-JATORzXjj7AqT73sPBO78G2XPBduVTndLFuZlssnWmZhjU9jTq1RTPSyuKPiRDmaZeLAVWmyyUlDwWfTD9Jv1mJdfbfmeVH_o4Y6f7dQHmhtsVRUFLo3eoUNIwCrpy6ovM6W0CO3Q1ulu2Jy2ccv1xIU1uYpC_mVWJ0A6W4Mvjcl2RohxiKasEumOAFyaqFupzUJC9x5pw">
+<div>
+<span class="block font-body-md text-body-md font-bold text-on-surface">Janice Doe</span>
+<span class="block font-label-sm text-label-sm text-on-surface-variant">j.doe@taskops.com</span>
+</div>
+</div>
+</td>
+<td class="px-lg py-md">
+<select class="bg-white border border-outline-variant rounded-lg px-sm py-xs font-label-md text-label-md focus:ring-primary focus:border-primary">
+<option>Admin</option>
+<option selected="">Member</option>
+</select>
+</td>
+<td class="px-lg py-md">
+<div class="flex -space-x-2">
+<div class="w-8 h-8 rounded-full border-2 border-white bg-tertiary-fixed flex items-center justify-center font-bold text-[10px]">UX</div>
+<div class="w-8 h-8 rounded-full border-2 border-white bg-on-secondary-fixed text-white flex items-center justify-center font-bold text-[10px]">FE</div>
+</div>
+</td>
+<td class="px-lg py-md font-body-md text-body-md text-on-surface-variant">Yesterday</td>
+<td class="px-lg py-md text-right">
+<div class="flex justify-end gap-sm">
+<button class="p-xs hover:bg-surface-container-high rounded transition-colors text-on-surface-variant" title="Edit Role">
+<span class="material-symbols-outlined text-[20px]" data-icon="edit">edit</span>
+</button>
+<button class="p-xs hover:bg-error-container hover:text-error rounded transition-colors text-on-surface-variant" title="Remove Access">
+<span class="material-symbols-outlined text-[20px]" data-icon="person_remove">person_remove</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-surface-container-high/50 transition-colors">
+<td class="px-lg py-md">
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 rounded-full bg-error-container flex items-center justify-center font-bold text-on-error-container">SL</div>
+<div>
+<span class="block font-body-md text-body-md font-bold text-on-surface">Soren Larsen</span>
+<span class="block font-label-sm text-label-sm text-on-surface-variant">s.larsen@taskops.com</span>
+</div>
+</div>
+</td>
+<td class="px-lg py-md">
+<select class="bg-white border border-outline-variant rounded-lg px-sm py-xs font-label-md text-label-md focus:ring-primary focus:border-primary">
+<option selected="">Admin</option>
+<option>Member</option>
+</select>
+</td>
+<td class="px-lg py-md">
+<span class="font-label-sm text-label-sm text-outline italic">No active projects</span>
+</td>
+<td class="px-lg py-md font-body-md text-body-md text-on-surface-variant">Aug 24, 2023</td>
+<td class="px-lg py-md text-right">
+<div class="flex justify-end gap-sm">
+<button class="p-xs hover:bg-surface-container-high rounded transition-colors text-on-surface-variant" title="Edit Role">
+<span class="material-symbols-outlined text-[20px]" data-icon="edit">edit</span>
+</button>
+<button class="p-xs hover:bg-error-container hover:text-error rounded transition-colors text-on-surface-variant" title="Remove Access">
+<span class="material-symbols-outlined text-[20px]" data-icon="person_remove">person_remove</span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="p-md bg-surface-container-low flex justify-between items-center px-lg border-t border-outline-variant">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Showing 4 of 48 members</span>
+<div class="flex gap-xs">
+<button class="p-xs border border-outline-variant rounded hover:bg-white transition-colors disabled:opacity-50" disabled="">
+<span class="material-symbols-outlined text-[18px]" data-icon="chevron_left">chevron_left</span>
+</button>
+<button class="p-xs border border-outline-variant rounded hover:bg-white transition-colors">
+<span class="material-symbols-outlined text-[18px]" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Role Permissions Detail Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter pb-xl">
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-lg">
+<div class="flex items-center gap-md mb-lg">
+<div class="w-10 h-10 rounded-lg bg-primary flex items-center justify-center text-on-primary">
+<span class="material-symbols-outlined" data-icon="security">security</span>
+</div>
+<h3 class="font-headline-md text-headline-md font-bold">Admin Privileges</h3>
+</div>
+<ul class="space-y-md">
+<li class="flex items-start gap-sm">
+<span class="material-symbols-outlined text-tertiary text-[18px]" data-icon="check_circle">check_circle</span>
+<span class="font-body-md text-body-md text-on-surface-variant">Full access to billing and subscription settings</span>
+</li>
+<li class="flex items-start gap-sm">
+<span class="material-symbols-outlined text-tertiary text-[18px]" data-icon="check_circle">check_circle</span>
+<span class="font-body-md text-body-md text-on-surface-variant">Ability to invite, remove, and promote team members</span>
+</li>
+<li class="flex items-start gap-sm">
+<span class="material-symbols-outlined text-tertiary text-[18px]" data-icon="check_circle">check_circle</span>
+<span class="font-body-md text-body-md text-on-surface-variant">Modify global workspace configurations</span>
+</li>
+</ul>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-lg">
+<div class="flex items-center gap-md mb-lg">
+<div class="w-10 h-10 rounded-lg bg-secondary flex items-center justify-center text-on-secondary">
+<span class="material-symbols-outlined" data-icon="work">work</span>
+</div>
+<h3 class="font-headline-md text-headline-md font-bold">Member Capabilities</h3>
+</div>
+<ul class="space-y-md">
+<li class="flex items-start gap-sm">
+<span class="material-symbols-outlined text-tertiary text-[18px]" data-icon="check_circle">check_circle</span>
+<span class="font-body-md text-body-md text-on-surface-variant">View all team members and assigned projects</span>
+</li>
+<li class="flex items-start gap-sm">
+<span class="material-symbols-outlined text-tertiary text-[18px]" data-icon="check_circle">check_circle</span>
+<span class="font-body-md text-body-md text-on-surface-variant">Create and manage tasks within their project scope</span>
+</li>
+<li class="flex items-start gap-sm">
+<span class="material-symbols-outlined text-tertiary text-[18px]" data-icon="check_circle">check_circle</span>
+<span class="font-body-md text-body-md text-on-surface-variant">Submit reports and update project statuses</span>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</main>
+</body></html>

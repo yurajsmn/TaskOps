@@ -1,0 +1,370 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "tertiary-fixed": "#6ffbbe",
+                    "on-secondary-fixed": "#0b1c30",
+                    "primary-container": "#131b2e",
+                    "primary": "#000000",
+                    "primary-fixed": "#dae2fd",
+                    "on-surface": "#191c1e",
+                    "surface-variant": "#e0e3e5",
+                    "surface-dim": "#d8dadc",
+                    "error": "#ba1a1a",
+                    "tertiary-container": "#002113",
+                    "primary-fixed-dim": "#bec6e0",
+                    "on-secondary-fixed-variant": "#38485d",
+                    "tertiary-fixed-dim": "#4edea3",
+                    "surface-container-highest": "#e0e3e5",
+                    "secondary-fixed-dim": "#b7c8e1",
+                    "on-primary": "#ffffff",
+                    "secondary": "#505f76",
+                    "surface-container-high": "#e6e8ea",
+                    "error-container": "#ffdad6",
+                    "tertiary": "#000000",
+                    "on-primary-container": "#7c839b",
+                    "on-secondary": "#ffffff",
+                    "background": "#f7f9fb",
+                    "on-tertiary-fixed-variant": "#005236",
+                    "surface-container": "#eceef0",
+                    "outline-variant": "#c6c6cd",
+                    "on-primary-fixed-variant": "#3f465c",
+                    "on-error": "#ffffff",
+                    "on-primary-fixed": "#131b2e",
+                    "on-tertiary-fixed": "#002113",
+                    "on-tertiary": "#ffffff",
+                    "surface-container-low": "#f2f4f6",
+                    "on-background": "#191c1e",
+                    "surface-tint": "#565e74",
+                    "on-tertiary-container": "#009668",
+                    "on-error-container": "#93000a",
+                    "surface-bright": "#f7f9fb",
+                    "surface": "#f7f9fb",
+                    "inverse-on-surface": "#eff1f3",
+                    "secondary-fixed": "#d3e4fe",
+                    "outline": "#76777d",
+                    "on-surface-variant": "#45464d",
+                    "secondary-container": "#d0e1fb",
+                    "inverse-surface": "#2d3133",
+                    "inverse-primary": "#bec6e0",
+                    "on-secondary-container": "#54647a",
+                    "surface-container-lowest": "#ffffff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "xs": "4px",
+                    "margin-mobile": "16px",
+                    "lg": "24px",
+                    "margin-desktop": "32px",
+                    "md": "16px",
+                    "sm": "8px",
+                    "base": "4px",
+                    "gutter": "24px",
+                    "xl": "40px"
+            },
+            "fontFamily": {
+                    "headline-lg-mobile": ["Inter"],
+                    "label-md": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "body-md": ["Inter"],
+                    "label-sm": ["Inter"],
+                    "headline-xl": ["Inter"]
+            },
+            "fontSize": {
+                    "headline-lg-mobile": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "headline-md": ["18px", {"lineHeight": "24px", "fontWeight": "600"}],
+                    "headline-lg": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "label-sm": ["11px", {"lineHeight": "14px", "fontWeight": "500"}],
+                    "headline-xl": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .shadow-soft { box-shadow: 0px 4px 12px rgba(15, 23, 42, 0.08); }
+        .kanban-column { min-width: 320px; width: 100%; }
+        .task-card { border: 1px solid #E2E8F0; }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen">
+<!-- SideNavBar (Authority: JSON) -->
+<aside class="fixed left-0 top-0 h-full w-64 bg-surface-container-low dark:bg-primary-container border-r border-outline-variant dark:border-outline flex flex-col p-md gap-sm z-50">
+<div class="flex flex-col gap-xs mb-xl px-sm">
+<span class="font-headline-lg text-headline-lg font-black text-on-primary-fixed dark:text-primary-fixed uppercase tracking-tighter">TaskOps</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant opacity-70">Enterprise Edition</span>
+</div>
+<nav class="flex flex-col gap-sm flex-grow">
+<!-- Active: Projects -->
+<div class="flex items-center gap-md px-md py-sm cursor-pointer transition-all hover:bg-surface-container-high dark:hover:bg-on-secondary-fixed-variant text-on-surface-variant dark:text-surface-variant">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-label-md text-label-md">Dashboard</span>
+</div>
+<div class="flex items-center gap-md px-md py-sm cursor-pointer transition-transform duration-200 active:scale-95 bg-secondary-container dark:bg-secondary text-on-secondary-container dark:text-on-secondary rounded-lg font-bold">
+<span class="material-symbols-outlined" data-icon="assignment">assignment</span>
+<span class="font-label-md text-label-md">Projects</span>
+</div>
+<div class="flex items-center gap-md px-md py-sm cursor-pointer transition-all hover:bg-surface-container-high dark:hover:bg-on-secondary-fixed-variant text-on-surface-variant dark:text-surface-variant">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+<span class="font-label-md text-label-md">Team</span>
+</div>
+<div class="flex items-center gap-md px-md py-sm cursor-pointer transition-all hover:bg-surface-container-high dark:hover:bg-on-secondary-fixed-variant text-on-surface-variant dark:text-surface-variant">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-label-md text-label-md">Settings</span>
+</div>
+</nav>
+<button class="mt-auto bg-primary text-on-primary py-md px-lg rounded-lg font-label-md text-label-md flex items-center justify-center gap-sm transition-all hover:opacity-90 active:scale-95">
+<span class="material-symbols-outlined text-[18px]" data-icon="add">add</span>
+            Create New Task
+        </button>
+</aside>
+<!-- Main Content Area -->
+<main class="ml-64 w-[calc(100%-16rem)] min-h-screen flex flex-col">
+<!-- TopNavBar (Authority: JSON) -->
+<header class="fixed top-0 w-[calc(100%-16rem)] z-40 bg-surface-container-lowest dark:bg-inverse-surface border-b border-outline-variant dark:border-outline flex justify-between items-center h-16 px-margin-desktop">
+<div class="flex items-center gap-lg">
+<h1 class="font-headline-md text-headline-md font-bold text-on-surface dark:text-inverse-on-surface">Website Redesign Project</h1>
+<div class="relative w-64">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-[20px]" data-icon="search">search</span>
+<input class="w-full bg-surface-container rounded-lg border-none pl-10 py-1.5 font-body-md text-body-md focus:ring-1 focus:ring-primary" placeholder="Search tasks..." type="text">
+</div>
+</div>
+<div class="flex items-center gap-md">
+<div class="p-2 cursor-pointer hover:bg-surface-container-high dark:hover:bg-on-secondary-fixed-variant rounded-full transition-colors text-on-surface-variant">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</div>
+<div class="p-2 cursor-pointer hover:bg-surface-container-high dark:hover:bg-on-secondary-fixed-variant rounded-full transition-colors text-on-surface-variant">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+</div>
+<div class="relative ml-sm">
+<img alt="User Avatar" class="w-8 h-8 rounded-full object-cover ring-2 ring-outline-variant" data-alt="A professional headshot of a corporate male executive with a focused expression, set against a blurred modern office background. The lighting is crisp and cool, maintaining a high-end enterprise aesthetic. The image uses a clean palette of whites and soft greys to match a sophisticated light-mode UI design." src="https://lh3.googleusercontent.com/aida-public/AB6AXuARSo7eGtG5qgPNtwktB-Uq_nUBnqH4vF8umWYx1LVjuEvzjcT9oIshGhguJdnhzaIH2i0qcpSgEVUBTLGWHQdP9353nvbUnMwaoDBBxQWf8e6wtbXfftNhqZch2rINQ03462dyPumY_Tsw3VGj4BeMNSCS_b29o-D5ey5_uWUv8NoFVvkUjQC9p0NE5LalHNY46fUFH_85PdMDV967QsyRrQK8YsgH_Gd9qjLkmtHNb881bcXHZB-hQinya4Sj2bAPrS-wl0mlMA">
+<div class="absolute -bottom-1 -right-1 w-3 h-3 bg-tertiary-fixed rounded-full border-2 border-white"></div>
+</div>
+</div>
+</header>
+<!-- Task Board Header / Filters -->
+<div class="mt-16 p-margin-desktop bg-surface-bright flex flex-col gap-lg">
+<div class="flex justify-between items-end">
+<div class="flex flex-col gap-xs">
+<nav class="flex items-center gap-xs font-label-sm text-label-sm text-on-surface-variant">
+<span>Projects</span>
+<span class="material-symbols-outlined text-[14px]" data-icon="chevron_right">chevron_right</span>
+<span class="text-on-surface font-semibold">Website Redesign</span>
+</nav>
+<div class="flex items-center gap-md mt-sm">
+<div class="flex -space-x-2">
+<img alt="Assignee" class="w-8 h-8 rounded-full border-2 border-white object-cover" data-alt="Close-up portrait of a professional female designer in a bright, modern studio. The mood is creative yet corporate with natural lighting. Colors are muted and clean to fit a professional enterprise dashboard layout." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAzRyFW9q4DuNUeyp8ow0q39QeCePmRAN6Z3E_-TIGNNBlFzW25g5BYulUW_1YSfGFZNq3uWe_QK6_Y5ck4_klosEZ1okGF3oaac2leFB2Ip8SdtyWbs4rJIB44tfsyo0DjVWlFkGHjFUZEK2qUJ0DXy2qyoGI7dVv9TKl-OZx7L-OOV5Icrzeb73-vHwEG6PXnjiXbYY5jz3Fc3IsGeH7-h9eAne6M1gX7O3VHbgW9CykkzGrzlXY0S39Ey5lb2_vVTHspszfGuw">
+<img alt="Assignee" class="w-8 h-8 rounded-full border-2 border-white object-cover" data-alt="Professional portrait of a male software engineer wearing a dark sweater, set against a minimalist architectural background. High-key lighting emphasizes a clean, corporate style. The aesthetic is modern and systematic, integrated with a high-stakes enterprise environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCWL3AKFr6hMhEqkIYlI3-QhsK3dpO7vNv7kaZT80jR7_va0sencuKkHAukvP1pAqspjaBCVtCPmtfpWCDJSrSiMpMYktni4_tgcV6U9yjZHvfPZlk5Adk-0-Av9HZlsj5ZLzGsmYtvGOv_P1Ev3MRx_OrWCB1QZJwRSq77WJULsOiBzja81NmxhuEOQxKIhEvbzx8EQBodbYGmtw_k1jZj1PuOt_pLzdAWZ5tnEAJx-J-wc2KAZRrbc9eymw0XA3WiMjWtwUly-Q">
+<div class="w-8 h-8 rounded-full border-2 border-white bg-surface-container-highest flex items-center justify-center font-label-sm text-label-sm">+4</div>
+</div>
+<div class="h-6 w-[1px] bg-outline-variant"></div>
+<div class="flex items-center gap-sm text-on-surface-variant font-label-md text-label-md bg-white px-md py-sm rounded-lg shadow-sm border border-outline-variant">
+<span class="material-symbols-outlined text-[18px]" data-icon="calendar_today">calendar_today</span>
+                            Oct 12 - Nov 30, 2024
+                        </div>
+</div>
+</div>
+<div class="flex items-center gap-sm">
+<!-- Filters -->
+<div class="flex bg-surface-container rounded-lg p-1">
+<button class="px-md py-1.5 font-label-md text-label-md bg-white rounded-md shadow-sm text-primary">Board</button>
+<button class="px-md py-1.5 font-label-md text-label-md text-on-surface-variant hover:bg-surface-container-high transition-colors">Timeline</button>
+<button class="px-md py-1.5 font-label-md text-label-md text-on-surface-variant hover:bg-surface-container-high transition-colors">List</button>
+</div>
+<div class="h-8 w-[1px] bg-outline-variant mx-sm"></div>
+<button class="flex items-center gap-sm px-md py-2 bg-white border border-outline-variant rounded-lg font-label-md text-label-md text-on-surface hover:bg-surface-container-low transition-all">
+<span class="material-symbols-outlined text-[18px]" data-icon="filter_list">filter_list</span>
+                        Filters
+                    </button>
+<button class="flex items-center gap-sm px-md py-2 bg-primary text-on-primary rounded-lg font-label-md text-label-md transition-all hover:opacity-90">
+<span class="material-symbols-outlined text-[18px]" data-icon="share">share</span>
+                        Export
+                    </button>
+</div>
+</div>
+<!-- Contextual Filters Row -->
+<div class="flex gap-sm">
+<div class="flex items-center gap-xs px-md py-1.5 bg-primary-container text-white rounded-full font-label-sm text-label-sm cursor-pointer">
+                    Assigned to Me
+                    <span class="material-symbols-outlined text-[14px]" data-icon="close">close</span>
+</div>
+<div class="flex items-center gap-xs px-md py-1.5 bg-error-container text-on-error-container rounded-full font-label-sm text-label-sm cursor-pointer">
+                    High Priority
+                    <span class="material-symbols-outlined text-[14px]" data-icon="close">close</span>
+</div>
+<button class="text-primary font-label-sm text-label-sm underline underline-offset-4 ml-sm">Clear all filters</button>
+</div>
+</div>
+<!-- Kanban Board -->
+<div class="flex-grow p-margin-desktop pt-0 overflow-x-auto">
+<div class="flex gap-gutter h-full items-start">
+<!-- TO DO COLUMN -->
+<div class="kanban-column flex flex-col gap-md">
+<div class="flex justify-between items-center px-sm">
+<div class="flex items-center gap-sm">
+<h3 class="font-headline-md text-headline-md text-on-surface">To Do</h3>
+<span class="bg-surface-container-highest px-2 py-0.5 rounded-full font-label-sm text-label-sm">3</span>
+</div>
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors" data-icon="add">add</button>
+</div>
+<!-- Card 1 -->
+<div class="task-card bg-white p-md rounded-lg shadow-soft flex flex-col gap-md cursor-pointer hover:border-primary transition-all">
+<div class="flex justify-between items-start">
+<span class="px-sm py-1 bg-error-container text-on-error-container rounded-md font-label-sm text-label-sm">High</span>
+<span class="material-symbols-outlined text-on-surface-variant text-[18px]" data-icon="more_horiz">more_horiz</span>
+</div>
+<p class="font-body-md text-body-md font-semibold text-on-surface">Define Design Tokens &amp; System Architecture</p>
+<div class="flex justify-between items-center mt-sm">
+<div class="flex items-center gap-xs text-on-surface-variant font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[16px]" data-icon="calendar_month">calendar_month</span>
+                                Oct 28
+                            </div>
+<img alt="Assignee" class="w-6 h-6 rounded-full border border-outline-variant" data-alt="Professional portrait of a female creative director with glasses, characterized by a clean and sharp aesthetic. The lighting is bright and airy, reflecting a modern corporate workspace. The overall visual style is minimalist and high-contrast, perfectly suited for an enterprise UI." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCvTO7XAzbky-CdDr-f2vbmsch4YICQ3baAVHFUmUJxXuOP_jhhW-3GLRanOAT2Ml9_RIY8eMnBHf6ani3cDqszHtS-G62WZKzzKLfQ2uIUO4e9qHbMNz3qruGujxf_PdNTEIm-sFt3UEjJzlL703yUaaMIub2i4ZYCRoK166iocuSJHGq4ymi8i71x4hpasDyvhNa5qww32uuOTXhac-ypG6HetopyBAjwVhhXTmwIDQMtBWOSJr6QgMImXdk4HOwuarOreVTYCw">
+</div>
+</div>
+<!-- Card 2 -->
+<div class="task-card bg-white p-md rounded-lg shadow-soft flex flex-col gap-md cursor-pointer hover:border-primary transition-all">
+<div class="flex justify-between items-start">
+<span class="px-sm py-1 bg-surface-container-highest text-on-surface-variant rounded-md font-label-sm text-label-sm">Medium</span>
+<span class="material-symbols-outlined text-on-surface-variant text-[18px]" data-icon="more_horiz">more_horiz</span>
+</div>
+<p class="font-body-md text-body-md font-semibold text-on-surface">Information Architecture for Dashboard Screens</p>
+<div class="flex justify-between items-center mt-sm">
+<div class="flex items-center gap-xs text-on-surface-variant font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[16px]" data-icon="calendar_month">calendar_month</span>
+                                Oct 30
+                            </div>
+<img alt="Assignee" class="w-6 h-6 rounded-full border border-outline-variant" data-alt="Portrait of a male UX researcher in a professional setting. The image emphasizes clean lines, balanced composition, and a monochromatic workspace background. The lighting is soft and flattering, supporting a modern and efficient enterprise design system style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB6ZNt3tonnNGfabEK-q4lCPSC7eZ7PYAUzal8XaQRMqZaoFW1TE4bHfcP5NFVA8t6wKyWx-HpNwPXqXD4gPkhSJT5l2VsBxDTHiUF4u8aGHpIY-EapI4Srgp4PaVpMatXxOxJggQFEXQXhDHA92QuLltKG9KHcFtwnS8si364V4fQvB36i8cHP4i93J2jam5AW04s8TkCG_uga6GeIGWXvd603XZj-4_O5gHpNOIPDIXf3UlZRDXOSrE6cEDEzyyvbWDECxuqx0A">
+</div>
+</div>
+</div>
+<!-- IN PROGRESS COLUMN -->
+<div class="kanban-column flex flex-col gap-md">
+<div class="flex justify-between items-center px-sm">
+<div class="flex items-center gap-sm">
+<h3 class="font-headline-md text-headline-md text-on-surface">In Progress</h3>
+<span class="bg-primary text-on-primary px-2 py-0.5 rounded-full font-label-sm text-label-sm">1</span>
+</div>
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors" data-icon="add">add</button>
+</div>
+<!-- Card -->
+<div class="task-card bg-white border-l-4 border-l-primary p-md rounded-lg shadow-soft flex flex-col gap-md cursor-pointer">
+<div class="flex justify-between items-start">
+<span class="px-sm py-1 bg-error-container text-on-error-container rounded-md font-label-sm text-label-sm">High</span>
+<span class="material-symbols-outlined text-on-surface-variant text-[18px]" data-icon="more_horiz">more_horiz</span>
+</div>
+<p class="font-body-md text-body-md font-semibold text-on-surface">Landing Page Visual Explorations (Bento Layout)</p>
+<div class="w-full h-24 bg-surface-container rounded-md mb-xs relative overflow-hidden">
+<div class="absolute inset-0 bg-gradient-to-br from-primary-container/20 to-transparent"></div>
+<div class="absolute inset-0 flex items-center justify-center">
+<span class="material-symbols-outlined text-on-surface-variant opacity-20 text-[48px]" data-icon="image">image</span>
+</div>
+</div>
+<div class="flex justify-between items-center mt-sm">
+<div class="flex items-center gap-xs text-primary font-label-sm text-label-sm font-bold">
+<span class="material-symbols-outlined text-[16px]" data-icon="sync" style="font-variation-settings: 'FILL' 1;">sync</span>
+                                Today
+                            </div>
+<img alt="Assignee" class="w-6 h-6 rounded-full border border-outline-variant" data-alt="A professional headshot of a corporate male executive with a focused expression, set against a blurred modern office background. The lighting is crisp and cool, maintaining a high-end enterprise aesthetic. The image uses a clean palette of whites and soft greys to match a sophisticated light-mode UI design." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBCgLDEX87lXXhg4uC7tgQCoJIDJATM8z7Cf9v9LZpQ5bZTzCn0dQl1NRL8OwLIl11gwpV5IdVOI9jzFSVM0u1htkwdSg5Nd-wBQIPeprKLHcSaMWzcHPxPEYW_ZFfTHQ4yYR-k7zzidd3rnxax8iVnNAlCtlOZoDFSQtktagUVfg8Dx_S8GqyoBXKzy44lO8CsLpIHTGgVb6hzLyXGx4fn7ToBJkiOVOyj9M7Te7nuUPfVWivW5vGexN7HaB9DJ1UKE1Vu87Lq5w">
+</div>
+</div>
+</div>
+<!-- REVIEW COLUMN -->
+<div class="kanban-column flex flex-col gap-md">
+<div class="flex justify-between items-center px-sm">
+<div class="flex items-center gap-sm">
+<h3 class="font-headline-md text-headline-md text-on-surface">Review</h3>
+<span class="bg-surface-container-highest px-2 py-0.5 rounded-full font-label-sm text-label-sm">2</span>
+</div>
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors" data-icon="add">add</button>
+</div>
+<!-- Card 1 -->
+<div class="task-card bg-white p-md rounded-lg shadow-soft flex flex-col gap-md cursor-pointer hover:border-primary transition-all">
+<div class="flex justify-between items-start">
+<span class="px-sm py-1 bg-surface-container-highest text-on-surface-variant rounded-md font-label-sm text-label-sm">Low</span>
+<span class="material-symbols-outlined text-on-surface-variant text-[18px]" data-icon="more_horiz">more_horiz</span>
+</div>
+<p class="font-body-md text-body-md font-semibold text-on-surface">Copywriting for About Us &amp; Mission</p>
+<div class="flex items-center gap-xs">
+<span class="material-symbols-outlined text-on-surface-variant text-[14px]" data-icon="chat_bubble_outline">chat_bubble_outline</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">4 comments</span>
+</div>
+<div class="flex justify-between items-center mt-sm">
+<div class="flex items-center gap-xs text-on-surface-variant font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[16px]" data-icon="calendar_month">calendar_month</span>
+                                Oct 15
+                            </div>
+<img alt="Assignee" class="w-6 h-6 rounded-full border border-outline-variant" data-alt="Close-up portrait of a professional female designer in a bright, modern studio. The mood is creative yet corporate with natural lighting. Colors are muted and clean to fit a professional enterprise dashboard layout." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCY46nZVk_D2n7_VDLWC8PLCfTerpyUB4fNdj0T6z4-6-AQs1e3EPFY0v2um3BqIX1A5qSOfz3BDEqyuYxMBwoMgRKEi8YF4snzAw72JYIfUXP2xIonNFnA-0y0N5t0McKS0PlwGjilb_YWY8rUec6XZY1OdyqMQJECQADj2iVWCi8gOUvZlH2AytjvRwEAtMZqvZurPYYprrxUlkkcHz_FsXMYoUYgnj5E6yyhpvxJTI19hS0f9bBiA_CD_7dZ9rHSpm6jl4yzBg">
+</div>
+</div>
+<!-- Card 2 -->
+<div class="task-card bg-white p-md rounded-lg shadow-soft flex flex-col gap-md cursor-pointer hover:border-primary transition-all">
+<div class="flex justify-between items-start">
+<span class="px-sm py-1 bg-error-container text-on-error-container rounded-md font-label-sm text-label-sm">High</span>
+<span class="material-symbols-outlined text-on-surface-variant text-[18px]" data-icon="more_horiz">more_horiz</span>
+</div>
+<p class="font-body-md text-body-md font-semibold text-on-surface">User Testing Feedback Integration</p>
+<div class="flex justify-between items-center mt-sm">
+<div class="flex items-center gap-xs text-error font-label-sm text-label-sm font-bold">
+<span class="material-symbols-outlined text-[16px]" data-icon="warning">warning</span>
+                                Overdue
+                            </div>
+<img alt="Assignee" class="w-6 h-6 rounded-full border border-outline-variant" data-alt="Professional portrait of a male software engineer wearing a dark sweater, set against a minimalist architectural background. High-key lighting emphasizes a clean, corporate style. The aesthetic is modern and systematic, integrated with a high-stakes enterprise environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAoDiWvGPUvjdMFpR7XJTenXep49NgiaMA5kSIedp33eMYIJ34zAFh22yJNbvlf-kF18r_C9uRxSGZ1T56kAegbpXnoGj4f0NW50bGz_2yTkXohy9pqlEImL7IdQaEVDJka_rne7UN7BC0DEIwtKv9ASP6mXFNylj-gLxcSH_ygdLTL2Pg8Nic8r38HpQu9lu7aLilAbT7mc4zD9k4QBU9lfJVh6_aDg0Ra-JH7oXUPuq6B0SWwmpelTAeRHOAVQL2q4qVh4YheRg">
+</div>
+</div>
+</div>
+<!-- DONE COLUMN -->
+<div class="kanban-column flex flex-col gap-md opacity-60">
+<div class="flex justify-between items-center px-sm">
+<div class="flex items-center gap-sm">
+<h3 class="font-headline-md text-headline-md text-on-surface">Done</h3>
+<span class="bg-surface-container-highest px-2 py-0.5 rounded-full font-label-sm text-label-sm">8</span>
+</div>
+</div>
+<!-- Card 1 -->
+<div class="task-card bg-surface-container-low p-md rounded-lg shadow-none flex flex-col gap-md border-dashed border-outline-variant">
+<div class="flex justify-between items-start">
+<span class="px-sm py-1 bg-surface-container-high text-on-surface-variant rounded-md font-label-sm text-label-sm opacity-50">Low</span>
+<span class="material-symbols-outlined text-tertiary-container text-[20px]" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<p class="font-body-md text-body-md font-semibold text-on-surface-variant line-through">Project Discovery Phase</p>
+<div class="flex justify-between items-center mt-sm">
+<div class="flex items-center gap-xs text-on-surface-variant font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[16px]" data-icon="calendar_month">calendar_month</span>
+                                Oct 05
+                            </div>
+<div class="w-6 h-6 rounded-full bg-surface-variant flex items-center justify-center text-[10px] font-bold">SJ</div>
+</div>
+</div>
+<button class="w-full py-md border-2 border-dashed border-outline-variant rounded-lg font-label-md text-label-md text-on-surface-variant hover:bg-surface-container transition-all flex items-center justify-center gap-sm mt-sm">
+<span class="material-symbols-outlined text-[20px]" data-icon="history">history</span>
+                        View Archived Tasks
+                    </button>
+</div>
+</div>
+</div>
+</main>
+</body></html>

@@ -1,0 +1,417 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>TaskOps Enterprise - Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-fixed": "#6ffbbe",
+                        "on-secondary-fixed": "#0b1c30",
+                        "primary-container": "#131b2e",
+                        "primary": "#000000",
+                        "primary-fixed": "#dae2fd",
+                        "on-surface": "#191c1e",
+                        "surface-variant": "#e0e3e5",
+                        "surface-dim": "#d8dadc",
+                        "error": "#ba1a1a",
+                        "tertiary-container": "#002113",
+                        "primary-fixed-dim": "#bec6e0",
+                        "on-secondary-fixed-variant": "#38485d",
+                        "tertiary-fixed-dim": "#4edea3",
+                        "surface-container-highest": "#e0e3e5",
+                        "secondary-fixed-dim": "#b7c8e1",
+                        "on-primary": "#ffffff",
+                        "secondary": "#505f76",
+                        "surface-container-high": "#e6e8ea",
+                        "error-container": "#ffdad6",
+                        "tertiary": "#000000",
+                        "on-primary-container": "#7c839b",
+                        "on-secondary": "#ffffff",
+                        "background": "#f7f9fb",
+                        "on-tertiary-fixed-variant": "#005236",
+                        "surface-container": "#eceef0",
+                        "outline-variant": "#c6c6cd",
+                        "on-primary-fixed-variant": "#3f465c",
+                        "on-error": "#ffffff",
+                        "on-primary-fixed": "#131b2e",
+                        "on-tertiary-fixed": "#002113",
+                        "on-tertiary": "#ffffff",
+                        "surface-container-low": "#f2f4f6",
+                        "on-background": "#191c1e",
+                        "surface-tint": "#565e74",
+                        "on-tertiary-container": "#009668",
+                        "on-error-container": "#93000a",
+                        "surface-bright": "#f7f9fb",
+                        "surface": "#f7f9fb",
+                        "inverse-on-surface": "#eff1f3",
+                        "secondary-fixed": "#d3e4fe",
+                        "outline": "#76777d",
+                        "on-surface-variant": "#45464d",
+                        "secondary-container": "#d0e1fb",
+                        "inverse-surface": "#2d3133",
+                        "inverse-primary": "#bec6e0",
+                        "on-secondary-container": "#54647a",
+                        "surface-container-lowest": "#ffffff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xs": "4px",
+                        "margin-mobile": "16px",
+                        "lg": "24px",
+                        "margin-desktop": "32px",
+                        "md": "16px",
+                        "sm": "8px",
+                        "base": "4px",
+                        "gutter": "24px",
+                        "xl": "40px"
+                    },
+                    "fontFamily": {
+                        "headline-lg-desktop": ["Inter"],
+                        "label-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "headline-xl": ["Inter"]
+                    },
+                    "fontSize": {
+                        "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-md": ["18px", {"lineHeight": "24px", "fontWeight": "600"}],
+                        "headline-lg": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "label-sm": ["11px", {"lineHeight": "14px", "fontWeight": "500"}],
+                        "headline-xl": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; background-color: #f7f9fb; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .custom-scrollbar::-webkit-scrollbar { width: 4px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #e2e8e5; border-radius: 10px; }
+    </style>
+</head>
+<body class="text-on-surface">
+<!-- SideNavBar Anchor -->
+<aside class="fixed left-0 top-0 h-full w-64 bg-surface-container-low dark:bg-primary-container border-r border-outline-variant dark:border-outline flex flex-col p-md gap-sm z-50">
+<div class="flex items-center gap-md px-md py-lg">
+<div class="w-10 h-10 bg-primary flex items-center justify-center rounded-lg">
+<span class="material-symbols-outlined text-on-primary" data-icon="rocket_launch">rocket_launch</span>
+</div>
+<div>
+<h1 class="font-headline-lg text-headline-lg font-black text-on-primary-fixed dark:text-primary-fixed leading-tight">TaskOps</h1>
+<p class="font-label-sm text-label-sm text-on-surface-variant opacity-70">Enterprise Edition</p>
+</div>
+</div>
+<nav class="flex flex-col gap-xs mt-lg">
+<!-- Active: Dashboard -->
+<div class="flex items-center gap-md px-md py-sm cursor-pointer transition-transform duration-200 active:scale-95 bg-secondary-container dark:bg-secondary text-on-secondary-container dark:text-on-secondary rounded-lg font-bold">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-label-md text-label-md">Dashboard</span>
+</div>
+<div class="flex items-center gap-md px-md py-sm cursor-pointer transition-transform duration-200 active:scale-95 text-on-surface-variant dark:text-surface-variant hover:bg-surface-container-high dark:hover:bg-on-secondary-fixed-variant rounded-lg transition-all">
+<span class="material-symbols-outlined" data-icon="assignment">assignment</span>
+<span class="font-label-md text-label-md">Projects</span>
+</div>
+<div class="flex items-center gap-md px-md py-sm cursor-pointer transition-transform duration-200 active:scale-95 text-on-surface-variant dark:text-surface-variant hover:bg-surface-container-high dark:hover:bg-on-secondary-fixed-variant rounded-lg transition-all">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+<span class="font-label-md text-label-md">Team</span>
+</div>
+<div class="flex items-center gap-md px-md py-sm cursor-pointer transition-transform duration-200 active:scale-95 text-on-surface-variant dark:text-surface-variant hover:bg-surface-container-high dark:hover:bg-on-secondary-fixed-variant rounded-lg transition-all">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-label-md text-label-md">Settings</span>
+</div>
+</nav>
+<div class="mt-auto px-md pb-md">
+<button class="w-full py-sm bg-primary text-on-primary rounded-lg font-label-md text-label-md flex items-center justify-center gap-sm hover:opacity-90 active:scale-95 transition-all">
+<span class="material-symbols-outlined text-[18px]" data-icon="add">add</span>
+                Create New Task
+            </button>
+</div>
+</aside>
+<!-- TopNavBar Anchor -->
+<header class="fixed top-0 w-full z-40 bg-surface-container-lowest dark:bg-inverse-surface border-b border-outline-variant dark:border-outline flex justify-between items-center h-16 px-margin-desktop ml-64 max-w-[calc(100%-16rem)]">
+<div class="flex items-center flex-1">
+<div class="relative w-full max-w-md">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-[20px]" data-icon="search">search</span>
+<input class="w-full bg-surface-container border-none rounded-full py-2 pl-10 pr-4 font-body-md text-body-md focus:ring-2 focus:ring-primary/20 transition-all" placeholder="Search tasks, projects, or team..." type="text">
+</div>
+</div>
+<div class="flex items-center gap-lg">
+<div class="flex items-center gap-md">
+<button class="p-2 rounded-full hover:bg-surface-container-high dark:hover:bg-on-secondary-fixed-variant transition-colors relative cursor-pointer active:opacity-80">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="notifications">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-error rounded-full border-2 border-white"></span>
+</button>
+<button class="p-2 rounded-full hover:bg-surface-container-high dark:hover:bg-on-secondary-fixed-variant transition-colors cursor-pointer active:opacity-80">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="settings">settings</span>
+</button>
+</div>
+<div class="h-8 w-[1px] bg-outline-variant"></div>
+<div class="flex items-center gap-md">
+<div class="text-right hidden sm:block">
+<p class="font-label-md text-label-md text-on-surface leading-none">Alexander Pierce</p>
+<p class="font-label-sm text-label-sm text-primary font-bold">Admin</p>
+</div>
+<div class="relative">
+<img alt="User profile avatar with role badge" class="w-10 h-10 rounded-full object-cover border-2 border-primary-fixed" data-alt="A professional headshot of a mature male executive in a sleek, modern tech environment. He is wearing a dark navy suit and has a confident, approachable expression. The lighting is crisp and natural, highlighting high-end corporate textures. Background is a blurred, high-tech glass-walled office with neutral tones and soft blue accents." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDrvKJZAANLIELrQQ78uftgV4GZ1jzKdwPPL4IPhEy5KsTocCyjlEGySNwPMBdZ8KWsCJT_15AKw4U20Vnntf3z3PjM2eZLIP0x7iMk3zbhPvnfOw8pAsehRM-Uw9h66GASvlYF8Pqc3bKanUHAO-5VtHHUBxekdzxm1X9wcsnA3K--qTk1hqyXJA7gkhhUUWqM4fO1ewaQh-DCPvlFub-VtlyO2BzQj3DqRT3uXf4bdJitGoQ83yfbAP4bAyVVVdxLqjp8EyVXSQ">
+<div class="absolute -bottom-1 -right-1 w-4 h-4 bg-tertiary-fixed rounded-full border-2 border-white"></div>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="ml-64 pt-16 min-h-screen bg-background p-margin-desktop">
+<!-- Welcome Header -->
+<div class="mb-xl">
+<h2 class="font-headline-xl text-headline-xl text-primary tracking-tight">Enterprise Overview</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant mt-1">Real-time performance metrics and priority task flow.</p>
+</div>
+<!-- High-Level Stats Bento Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter mb-xl">
+<!-- Stat Card -->
+<div class="bg-surface-container-lowest p-lg rounded-xl border border-outline-variant shadow-sm flex flex-col justify-between">
+<div class="flex justify-between items-start">
+<span class="material-symbols-outlined p-2 bg-primary-fixed text-on-primary-fixed rounded-lg" data-icon="task_alt">task_alt</span>
+<span class="text-on-tertiary-container font-label-md text-label-md bg-tertiary-container/10 px-2 py-1 rounded">+12%</span>
+</div>
+<div class="mt-md">
+<p class="font-label-md text-label-md text-on-surface-variant">Total Tasks</p>
+<p class="font-headline-lg text-headline-lg font-bold">1,482</p>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-lg rounded-xl border border-outline-variant shadow-sm flex flex-col justify-between">
+<div class="flex justify-between items-start">
+<span class="material-symbols-outlined p-2 bg-secondary-fixed text-on-secondary-fixed rounded-lg" data-icon="folder_managed">folder_managed</span>
+<span class="text-on-surface-variant font-label-md text-label-md">3 Active</span>
+</div>
+<div class="mt-md">
+<p class="font-label-md text-label-md text-on-surface-variant">Projects in Progress</p>
+<p class="font-headline-lg text-headline-lg font-bold">24</p>
+</div>
+</div>
+<div class="bg-error-container p-lg rounded-xl border border-error/20 shadow-sm flex flex-col justify-between">
+<div class="flex justify-between items-start">
+<span class="material-symbols-outlined p-2 bg-error text-on-error rounded-lg" data-icon="running_with_errors">running_with_errors</span>
+<span class="text-error font-label-md text-label-md font-bold">Urgent</span>
+</div>
+<div class="mt-md">
+<p class="font-label-md text-label-md text-on-error-container">Overdue Tasks</p>
+<p class="font-headline-lg text-headline-lg font-bold text-on-error-container">09</p>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-lg rounded-xl border border-outline-variant shadow-sm flex flex-col justify-between">
+<div class="flex justify-between items-start">
+<span class="material-symbols-outlined p-2 bg-tertiary-fixed text-on-tertiary-fixed rounded-lg" data-icon="speed">speed</span>
+<span class="text-on-tertiary-container font-label-md text-label-md bg-tertiary-container/10 px-2 py-1 rounded">Peak</span>
+</div>
+<div class="mt-md">
+<p class="font-label-md text-label-md text-on-surface-variant">Team Velocity</p>
+<p class="font-headline-lg text-headline-lg font-bold">94 pts</p>
+</div>
+</div>
+</div>
+<!-- Main Dashboard Content -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+<!-- Quick View: Overdue/Critical Tasks (Left Column) -->
+<div class="lg:col-span-8 flex flex-col gap-gutter">
+<section class="bg-surface-container-lowest rounded-xl border border-outline-variant shadow-sm overflow-hidden">
+<div class="px-lg py-md border-b border-outline-variant flex justify-between items-center">
+<h3 class="font-headline-md text-headline-md flex items-center gap-sm">
+<span class="material-symbols-outlined text-error" data-icon="warning">warning</span>
+                            Critical Tasks
+                        </h3>
+<button class="font-label-md text-label-md text-primary hover:underline">View All</button>
+</div>
+<div class="divide-y divide-outline-variant">
+<!-- Task Row -->
+<div class="p-lg hover:bg-surface-container-low transition-colors flex items-center gap-lg">
+<div class="flex-1">
+<div class="flex items-center gap-sm mb-1">
+<span class="px-2 py-0.5 bg-error text-on-error font-label-sm text-label-sm rounded uppercase tracking-wider">Overdue</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">ID: TK-402</span>
+</div>
+<h4 class="font-headline-md text-headline-md">API Integration for Payment Gateway</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">Project: FinTech Core v2.0</p>
+</div>
+<div class="flex items-center gap-xl">
+<div class="text-right">
+<p class="font-label-sm text-label-sm text-error font-bold">Due 2 days ago</p>
+<div class="flex -space-x-2 mt-2">
+<img class="w-8 h-8 rounded-full border-2 border-white object-cover" data-alt="Close-up portrait of a young software engineer with glasses, looking focused. Clean studio lighting, professional tech-industry atmosphere." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBoQkiXKa5JnIu6TZEfAWuy3NRWRxiT0gsINKA-z-YV5bkaK2kX8g7vz1zpmn5ITS2kZ1gERhaVqBPHL90XgcbpVYE6AtU-Va9JT8KRHZEbpuCG4FdQzXgS3i2ow6CIRZvBdPs2epbE0gplVJ8ktckD7oW94UnVNeko3Kq7w3GXwq_OERXUjBPabSjRNdV4h4ApRNi9WqUVUTgIJkQx3leN_UAIpeEsLIexoHs0BbJg6m4RwuuUe8KCg5pjiXf8gd-q6Jp2Qa_-OQ">
+<img class="w-8 h-8 rounded-full border-2 border-white object-cover" data-alt="Headshot of a smiling female project manager in a bright, modern office setting. She has a confident demeanor, wearing a light-colored professional shirt. Soft sunlight filtering through windows." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC3lBeoWRuLiTbYuUe-S3CnJc124g-ypQ6iOcLB-EO-UfoSTZLEBGk6r7UQ-XxUsCVnaULslDVe-4STtvJ3E5bFdE2qHfAvgVwaRVJ8IakIhggacysx4EWC8Zz5BPyJDD5DKTMhj6GvquQItJ1D307ezYjkL-_FuyEtBEElYAGlVWmOgO1hxPWYo1OMqj5xBvVv9eHIJ9DnrkuByfiiVFRMG7_9tDSVHGHsm85L0CoK1kGquqcZJeecjqbgyaSx7ksQyB1cao2FYQ">
+</div>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-primary" data-icon="chevron_right">chevron_right</span>
+</div>
+</div>
+<!-- Task Row -->
+<div class="p-lg hover:bg-surface-container-low transition-colors flex items-center gap-lg">
+<div class="flex-1">
+<div class="flex items-center gap-sm mb-1">
+<span class="px-2 py-0.5 bg-error-container text-on-error-container font-label-sm text-label-sm rounded uppercase tracking-wider">Critical</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">ID: TK-511</span>
+</div>
+<h4 class="font-headline-md text-headline-md">Security Audit Remediation</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">Project: Infrastructure Security</p>
+</div>
+<div class="flex items-center gap-xl">
+<div class="text-right">
+<p class="font-label-sm text-label-sm text-on-surface font-bold">Due Today</p>
+<div class="flex -space-x-2 mt-2">
+<img class="w-8 h-8 rounded-full border-2 border-white object-cover" data-alt="Portrait of an African American female IT security specialist in a sophisticated office. She is wearing professional attire and looking directly at the camera with a serious yet friendly expression." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA902FzhMouYh8JHw2FSeBMHGLeWfgD6OvRU917YHVUMGhPIwJESDVjqCQycsj9E9_yiBXi1dwQCw1fotUsb2d8KdU3vdgALLjkp4tp8p_gFYIPG_mTChnwaCQHJ58Kl94ljdsR-kHm41VfmF2820syd4njDxlj4UKsOW-QamTHSO9NYfg3_A8ad8aJtnKcfLc-5e1IRbLUDU9iBdHub0_3vIjONrUkGKd8jDyxZIJB0CA3_ZH7mbU9NRpFL5xf6KdZQmYVWieK4Q">
+</div>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-primary" data-icon="chevron_right">chevron_right</span>
+</div>
+</div>
+<!-- Task Row -->
+<div class="p-lg hover:bg-surface-container-low transition-colors flex items-center gap-lg">
+<div class="flex-1">
+<div class="flex items-center gap-sm mb-1">
+<span class="px-2 py-0.5 bg-error text-on-error font-label-sm text-label-sm rounded uppercase tracking-wider">Overdue</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">ID: TK-389</span>
+</div>
+<h4 class="font-headline-md text-headline-md">Database Migration Strategy</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">Project: Cloud Transformation</p>
+</div>
+<div class="flex items-center gap-xl">
+<div class="text-right">
+<p class="font-label-sm text-label-sm text-error font-bold">Due 4 days ago</p>
+<div class="flex -space-x-2 mt-2">
+<img class="w-8 h-8 rounded-full border-2 border-white object-cover" data-alt="Professional headshot of a middle-aged male architect in a modern architecture firm. Natural light, minimalist interior design in the background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBNeSNWCpZWk-VsCeP9HAn06--yeu0bc7AePdnMUK6vl-cAJzjIfHMRayolDFQFbhOjXKj0qQtwW9Czx1vzNSAgcyDNCF33v48y2QBTN_UpCtJxl77tVTamLnXYKEmpN1yE2NUIMeQyFybBap3O4mKqAYjKE4sVffn0s-Zed3-URROFYimOA6YagrncI1TgNp4B4wW3Nt8hAGxL79mMTev8cI-vf5oJ6Yj0S5bV92CKl5V069KpdcEGnpJu-T8qz2l9a8UlgrdrxA">
+<img class="w-8 h-8 rounded-full border-2 border-white object-cover" data-alt="A portrait of a young woman in a high-tech corporate office environment. She has a professional and focused look, wearing a sleek grey blazer. The background features soft bokeh of office lights." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB01-WZE-NfukyUUmgQmdobMEOOaZXd87sCoXGIkbSorwegaGBtusr0QHmPwCTblBf2fzWAfWj6UNmXcNiCSSkknw3aFiknFYZDFm_SPIQ3mzrNYyLHVoBYD9WuF1jgXDZD6Vytsa4grSIDYJl98XUOoM93NNwpH8uIkNmr4GixOKl7zeVA3t89UhGjsR5SgroXAySr8O_BGGDJE5ll6VRpoAr3C8DfKylkpL1WESUcjcsG_7iEoXUQQtmP5KxXQC5C1PRgKj0eTw">
+</div>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-primary" data-icon="chevron_right">chevron_right</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Project Progress -->
+<section class="bg-surface-container-lowest rounded-xl border border-outline-variant shadow-sm p-lg">
+<h3 class="font-headline-md text-headline-md mb-lg">Top Projects Progress</h3>
+<div class="space-y-xl">
+<!-- Project item -->
+<div>
+<div class="flex justify-between items-center mb-sm">
+<p class="font-label-md text-label-md text-on-surface">FinTech Core v2.0</p>
+<p class="font-label-md text-label-md text-primary font-bold">84%</p>
+</div>
+<div class="h-3 bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-primary rounded-full w-[84%]"></div>
+</div>
+</div>
+<!-- Project item -->
+<div>
+<div class="flex justify-between items-center mb-sm">
+<p class="font-label-md text-label-md text-on-surface">Enterprise Mobile App</p>
+<p class="font-label-md text-label-md text-primary font-bold">62%</p>
+</div>
+<div class="h-3 bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-primary rounded-full w-[62%]"></div>
+</div>
+</div>
+<!-- Project item -->
+<div>
+<div class="flex justify-between items-center mb-sm">
+<p class="font-label-md text-label-md text-on-surface">Infrastructure Security</p>
+<p class="font-label-md text-label-md text-primary font-bold">38%</p>
+</div>
+<div class="h-3 bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-secondary-container rounded-full w-[38%]"></div>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- Recent Activity Feed (Right Column) -->
+<div class="lg:col-span-4">
+<section class="bg-surface-container-lowest rounded-xl border border-outline-variant shadow-sm h-full flex flex-col">
+<div class="px-lg py-md border-b border-outline-variant">
+<h3 class="font-headline-md text-headline-md">Recent Activity</h3>
+</div>
+<div class="flex-1 overflow-y-auto custom-scrollbar p-lg">
+<div class="relative flex flex-col gap-xl">
+<!-- Timeline Line -->
+<div class="absolute left-[15px] top-0 bottom-0 w-[2px] bg-outline-variant"></div>
+<!-- Activity Item -->
+<div class="relative pl-xl">
+<div class="absolute left-0 top-1 w-8 h-8 rounded-full bg-surface-container-lowest border-2 border-primary flex items-center justify-center z-10">
+<span class="material-symbols-outlined text-[16px] text-primary" data-icon="assignment_ind">assignment_ind</span>
+</div>
+<div>
+<p class="font-body-md text-body-md text-on-surface"><span class="font-bold">John Doe</span> assigned <span class="text-primary font-medium">TK-511 Security Audit</span> to you.</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant mt-xs">2 minutes ago</p>
+</div>
+</div>
+<!-- Activity Item -->
+<div class="relative pl-xl">
+<div class="absolute left-0 top-1 w-8 h-8 rounded-full bg-surface-container-lowest border-2 border-on-secondary-container flex items-center justify-center z-10">
+<span class="material-symbols-outlined text-[16px] text-on-secondary-container" data-icon="chat_bubble">chat_bubble</span>
+</div>
+<div>
+<p class="font-body-md text-body-md text-on-surface"><span class="font-bold">Sarah Jenkins</span> commented on <span class="italic">API Integration</span></p>
+<div class="bg-surface-container-low p-sm rounded-lg mt-sm border-l-4 border-primary-fixed">
+<p class="font-body-md text-body-md text-on-surface-variant italic">"We need to review the OAuth2 flow before we push to staging."</p>
+</div>
+<p class="font-label-sm text-label-sm text-on-surface-variant mt-xs">45 minutes ago</p>
+</div>
+</div>
+<!-- Activity Item -->
+<div class="relative pl-xl">
+<div class="absolute left-0 top-1 w-8 h-8 rounded-full bg-surface-container-lowest border-2 border-tertiary flex items-center justify-center z-10">
+<span class="material-symbols-outlined text-[16px] text-tertiary" data-icon="check_circle">check_circle</span>
+</div>
+<div>
+<p class="font-body-md text-body-md text-on-surface"><span class="font-bold">Michael Chen</span> completed <span class="text-on-surface-variant line-through">Draft UI Specs</span></p>
+<p class="font-label-sm text-label-sm text-on-surface-variant mt-xs">2 hours ago</p>
+</div>
+</div>
+<!-- Activity Item -->
+<div class="relative pl-xl">
+<div class="absolute left-0 top-1 w-8 h-8 rounded-full bg-surface-container-lowest border-2 border-outline flex items-center justify-center z-10">
+<span class="material-symbols-outlined text-[16px] text-outline" data-icon="cloud_upload">cloud_upload</span>
+</div>
+<div>
+<p class="font-body-md text-body-md text-on-surface"><span class="font-bold">System</span> automatically backed up <span class="font-bold">Project Alpha Assets</span></p>
+<p class="font-label-sm text-label-sm text-on-surface-variant mt-xs">4 hours ago</p>
+</div>
+</div>
+<!-- Activity Item -->
+<div class="relative pl-xl">
+<div class="absolute left-0 top-1 w-8 h-8 rounded-full bg-surface-container-lowest border-2 border-error flex items-center justify-center z-10">
+<span class="material-symbols-outlined text-[16px] text-error" data-icon="report">report</span>
+</div>
+<div>
+<p class="font-body-md text-body-md text-on-surface"><span class="text-error font-bold">Alert:</span> Overdue threshold reached for 3 tasks.</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant mt-xs">8 hours ago</p>
+</div>
+</div>
+</div>
+</div>
+<div class="p-lg bg-surface-container-low text-center">
+<button class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors">View Full History</button>
+</div>
+</section>
+</div>
+</div>
+</main>
+</body></html>
