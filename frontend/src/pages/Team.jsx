@@ -1,6 +1,4 @@
 import { useState, useEffect } from 'react';
-import API_BASE from '../api';
-
 const Team = () => {
   const [users, setUsers] = useState([]);
   const [error, setError] = useState('');
@@ -9,7 +7,7 @@ const Team = () => {
 
   const fetchUsers = () => {
     const token = localStorage.getItem('token');
-    fetch(`${API_BASE}/api/auth/users`, {
+    fetch(`/api/auth/users`, {
       headers: { 'Authorization': `Bearer ${token}` }
     })
     .then(res => res.json())
@@ -26,7 +24,7 @@ const Team = () => {
     setSuccess('');
     const token = localStorage.getItem('token');
     try {
-      const res = await fetch(`${API_BASE}/api/auth/users/${userId}/role`, {
+      const res = await fetch(`/api/auth/users/${userId}/role`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
