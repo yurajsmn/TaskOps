@@ -24,7 +24,12 @@ const Login = () => {
       
       localStorage.setItem('token', data.token);
       localStorage.setItem('user', JSON.stringify(data.user));
-      navigate('/dashboard');
+      
+      if (data.user.role === 'Admin') {
+        navigate('/tasks');
+      } else {
+        navigate('/dashboard');
+      }
     } catch (err) {
       setError('Failed to connect to server');
     }

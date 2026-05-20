@@ -4,7 +4,11 @@ const Task = require('../models/Task');
 
 router.get('/', async (req, res) => {
     try {
-        const tasks = await Task.find().populate('project').populate('assignee');
+        let query = {};
+        if (req.user && req.user.role !== 'Admin') {
+            query.assignee = req.user._id;
+        }
+        const tasks = await Task.find(query).populate('project').populate('assignee');
         res.json(tasks);
     } catch (err) {
         res.status(500).json({ message: err.message });
