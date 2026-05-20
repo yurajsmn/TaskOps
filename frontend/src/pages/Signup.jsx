@@ -5,7 +5,6 @@ const Signup = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [role, setRole] = useState('Member');
   const [error, setError] = useState('');
   const navigate = useNavigate();
 
@@ -15,7 +14,7 @@ const Signup = () => {
       const res = await fetch('/api/auth/register', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name, email, password, role })
+        body: JSON.stringify({ name, email, password })
       });
       const data = await res.json();
       
@@ -87,27 +86,7 @@ const Signup = () => {
               />
             </div>
 
-            <div className="form-group">
-              <label htmlFor="role">Role</label>
-              <select 
-                id="role" 
-                value={role} 
-                onChange={(e) => setRole(e.target.value)}
-                style={{
-                  width: '100%',
-                  padding: 'var(--spacing-md)',
-                  backgroundColor: 'var(--color-surface-container-high)',
-                  border: '1px solid var(--color-outline)',
-                  borderRadius: 'var(--border-radius-lg)',
-                  color: 'var(--color-on-surface)',
-                  fontSize: '14px',
-                  outline: 'none'
-                }}
-              >
-                <option value="Member">Member</option>
-                <option value="Admin">Admin</option>
-              </select>
-            </div>
+
             
             <button type="submit" className="btn-submit">
               <span>Sign Up</span>

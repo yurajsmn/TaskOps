@@ -8,6 +8,8 @@ import Login from './pages/Login';
 import Signup from './pages/Signup';
 import './index.css';
 
+import Team from './pages/Team';
+
 function DashboardLayout({ children }) {
   return (
     <div className="app-container">
@@ -34,6 +36,7 @@ function App() {
         <Route path="/dashboard" element={<DashboardLayout><Dashboard /></DashboardLayout>} />
         <Route path="/projects" element={<DashboardLayout><Projects /></DashboardLayout>} />
         <Route path="/tasks" element={<DashboardLayout><TaskBoard /></DashboardLayout>} />
+        <Route path="/team" element={<DashboardLayout><Team /></DashboardLayout>} />
       </Routes>
     </Router>
   );

@@ -6,8 +6,16 @@ const User = require('../models/User');
 
 router.get('/', async (req, res) => {
     try {
-        const activeProjects = await Project.countDocuments({ status: 'Active' });
-        const completedTasks = await Task.countDocuments({ status: 'done' });
+        let projectQuery = { status: 'Active' };
+        let taskQuery = { status: 'done' };
+        
+        if (req.user && req.user.role !== 'Admin') {
+            taskQuery.assignee = req.user._id;
+            projectQuery.members = req.user._id;
+        }
+
+        const activeProjects = await Project.countDocuments(projectQuery);
+        const completedTasks = await Task.countDocuments(taskQuery);
         const teamMembers = await User.countDocuments();
 
         res.json({

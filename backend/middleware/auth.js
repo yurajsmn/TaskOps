@@ -15,7 +15,7 @@ const verifyToken = (req, res, next) => {
 
 const verifyAdmin = (req, res, next) => {
     verifyToken(req, res, () => {
-        if (req.user.role === 'Admin') {
+        if (req.user.role === 'Admin' || req.user.role === 'SuperAdmin') {
             next();
         } else {
             res.status(403).json({ message: 'Access Denied. Admins only.' });
@@ -23,4 +23,14 @@ const verifyAdmin = (req, res, next) => {
     });
 };
 
-module.exports = { verifyToken, verifyAdmin };
+const verifySuperAdmin = (req, res, next) => {
+    verifyToken(req, res, () => {
+        if (req.user.role === 'SuperAdmin') {
+            next();
+        } else {
+            res.status(403).json({ message: 'Access Denied. Super Admins only.' });
+        }
+    });
+};
+
+module.exports = { verifyToken, verifyAdmin, verifySuperAdmin };

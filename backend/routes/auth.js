@@ -19,7 +19,7 @@ router.post('/register', async (req, res) => {
             name,
             email,
             password: hashedPassword,
-            role: role || 'Member'
+            role: 'Member'
         });
 
         const savedUser = await user.save();
@@ -56,6 +56,24 @@ router.get('/users', async (req, res) => {
     try {
         const users = await User.find({}, '-password'); // Exclude passwords
         res.json(users);
+    } catch (err) {
+        res.status(500).json({ message: err.message });
+    }
+});
+
+const { verifySuperAdmin } = require('../middleware/auth');
+
+// Change user role (Super Admin only)
+router.put('/users/:id/role', verifySuperAdmin, async (req, res) => {
+    try {
+        const { role } = req.body;
+        if (!['Admin', 'Member'].includes(role)) {
+            return res.status(400).json({ message: 'Invalid role' });
+        }
+        const updatedUser = await User.findByIdAndUpdate(req.params.id, { role }, { new: true }).select('-password');
+        if (!updatedUser) return res.status(404).json({ message: 'User not found' });
+        
+        res.json(updatedUser);
     } catch (err) {
         res.status(500).json({ message: err.message });
     }
